@@ -19,7 +19,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000daf  00000000  00000000  00001f95  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000880  00000000  00000000  00002d44  2**0
+  8 .debug_line   0000087f  00000000  00000000  00002d44  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000001e0  00000000  00000000  000035c4  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -141,6 +141,7 @@ Disassembly of section .text:
 long map(long x, long in_min, long in_max, long out_min, long out_max)
 {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
  12a:	87 b1       	in	r24, 0x07	; 7
  12c:	87 6f       	ori	r24, 0xF7	; 247
  12e:	87 b9       	out	0x07, r24	; 7

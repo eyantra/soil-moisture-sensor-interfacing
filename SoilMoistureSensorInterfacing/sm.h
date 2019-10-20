@@ -7,6 +7,9 @@
  * Modifier: Debdut
  */ 
 
+#ifndef SM_H_
+#define SM_H_
+
 #define SM_MIN_CAL 300 //FC-28 MIN ADJUST
 #define SM_MAX_CAL 10 //FC-28 MAX ADJUST
 
@@ -81,3 +84,5 @@ long map(long x, long in_min, long in_max, long out_min, long out_max)
 {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
+
+#endif
