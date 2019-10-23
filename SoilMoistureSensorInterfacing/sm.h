@@ -2,13 +2,18 @@
  * sm.h
  *
  * Created: 19-Oct-19 03:46:26 PM
- * Modified: 20-Oct-19 12:51:10 AM
+ * Modified: 23-Oct-19 09:49:10 PM
  * Author: Debdut
  * Modifier: Debdut
  */ 
 
 #ifndef SM_H_
 #define SM_H_
+
+#define SM_PORT PORTF //SENSOR PORT REG
+#define SM_PD DDRF //SENSOR PORT DATA DIRECTION REG
+#define SM_PIN PINF5 //SENSOR PIN
+#define SM_PDR PINF //SENSOR INPUT DATA REG
 
 #define SM_MIN_CAL 300 //FC-28 MIN ADJUST
 #define SM_MAX_CAL 10 //FC-28 MAX ADJUST
@@ -27,7 +32,7 @@ long map(long ,long, long, long, long);
 //Function to config sensor port
 void sm_port_config(void)
 {
-	DDRF |= ~(1 << PINF5);
+	SM_PD &= ~(1 << SM_PIN);
 	/* Remove J2 jumper for IR proximity analog sensor 2
 	   to use PF5 (Pin No: 9 @ ATMEGA2560 Micro controller Board Expansion Socket)
 	   as FC-28 sensor output to ADC channel 5 input */
@@ -70,7 +75,7 @@ uint16_t adc_read(uint8_t channel)
 //Function to read FC-28 sensor ADC value
 uint16_t update_sm_sensor()
 {
-	return adc_read(ADC5D);
+	return adc_read(SM_PIN);
 }
 
 //Function to return moisture reading in percentage with calibration data
